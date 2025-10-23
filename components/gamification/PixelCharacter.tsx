@@ -24,7 +24,7 @@ export default function PixelCharacter({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [currentFrame, setCurrentFrame] = useState(0);
   const [spriteRenderer, setSpriteRenderer] = useState<SpriteRenderer | null>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
 
   const sizeMap = {
     small: 64,   // 16px * 4 scale
@@ -124,7 +124,7 @@ export default function PixelCharacter({
       transition: {
         duration: 2,
         repeat: Infinity,
-        ease: 'easeInOut',
+        ease: 'easeInOut' as const,
       },
     },
     celebrate: {
@@ -133,7 +133,7 @@ export default function PixelCharacter({
       transition: {
         duration: 0.5,
         repeat: Infinity,
-        ease: 'easeInOut',
+        ease: 'easeInOut' as const,
       },
     },
     dance: {
@@ -141,7 +141,7 @@ export default function PixelCharacter({
       transition: {
         duration: 0.8,
         repeat: Infinity,
-        ease: 'easeInOut',
+        ease: 'easeInOut' as const,
       },
     },
     jump: {
@@ -149,7 +149,7 @@ export default function PixelCharacter({
       transition: {
         duration: 0.6,
         repeat: Infinity,
-        ease: 'easeInOut',
+        ease: 'easeInOut' as const,
       },
     },
   };
@@ -198,8 +198,6 @@ export default function PixelCharacter({
           height={canvasSize}
           style={{
             imageRendering: 'pixelated',
-            imageRendering: '-moz-crisp-edges',
-            imageRendering: 'crisp-edges',
             background: 'transparent',
           }}
           className="select-none"
