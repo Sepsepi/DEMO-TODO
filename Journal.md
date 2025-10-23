@@ -61,11 +61,11 @@ I got back to my Claude Code Max CLI with the prompt and it started working on i
 
 Once pushed, I asked Claude Code to use Playwright MCP to go search through the web for game assets - starting with https://itch.io - and fully customize all the components and features. Give level-based progression with preview on locked cosmetics, try to follow as much as possible the dark RPG retro style on every page.
 
-Again, once it found all the assets, use Playwright MCP itself to test every feature, take screenshots, and be sensitive with the results. It's a fully functioning professional website, so no flaws should be there.
+Again, once it found all the assets, use Playwright MCP itself to test every feature, take screenshots, and be sensitive with the results. It's a fully functioning professional website, so no flaws should be there. the key to use playwright mcp is to see it as an eye for your agent, its basically figma mcp but for anything on the web, but just not that it can fuly interact, download signin/up and test your development by itself and devtools so you know its really overpowered! and MCPS overall for vibe coding 
 
 And there were a few errors like middlewares and assets and animations not loading properly. So overall it took us (Claude Code and me) an hour and a half and 6-7 prompts.
 
-Overall I use Ai heavily on basically every part, nowadays specially its even easier since you can setup custom mcp server for specific use cases to make your coder work with even less issues 
+Overall I use Ai heavily on basically every part, nowadays specially its even easier since you can setup custom mcp server for specific use cases to make your Ai coder work with even less issues 
 
 ## What Got Built
 
