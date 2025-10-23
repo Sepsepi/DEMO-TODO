@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #8b5cf6;
+  --color-secondary: #a78bfa;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Dark Retro RPG Colors */
+  --color-bg-dark: #1a1625;
+  --color-bg-darker: #0f0b1a;
+  --color-panel: #2a2139;
+  --color-panel-border: #3f3454;
+  --font-pixel: var(--font-press-start);
+}
+
+@layer base {
+  * {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  body {
+    @apply min-h-screen antialiased;
+    background: #0f0b1a;
+    background-image:
+      /* Pixel stars pattern */
+      radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+      radial-gradient(2px 2px at 60% 70%, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+      radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+      radial-gradient(1px 1px at 80% 10%, rgba(251, 191, 36, 0.8) 1px, transparent 1px),
+      radial-gradient(2px 2px at 90% 40%, rgba(168, 85, 247, 0.6) 1px, transparent 1px),
+      radial-gradient(1px 1px at 15% 80%, rgba(251, 191, 36, 0.5) 1px, transparent 1px),
+      radial-gradient(2px 2px at 40% 20%, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+      radial-gradient(1px 1px at 70% 90%, rgba(168, 85, 247, 0.4) 1px, transparent 1px),
+      /* Retro grid pattern */
+      repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 39px,
+        rgba(138, 92, 246, 0.03) 39px,
+        rgba(138, 92, 246, 0.03) 40px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 39px,
+        rgba(138, 92, 246, 0.03) 39px,
+        rgba(138, 92, 246, 0.03) 40px
+      ),
+      /* Main gradient background */
+      radial-gradient(ellipse at top, #2a2139 0%, #1a1625 40%, #0f0b1a 100%);
+    background-size:
+      200px 200px,
+      300px 300px,
+      150px 150px,
+      250px 250px,
+      180px 180px,
+      220px 220px,
+      280px 280px,
+      160px 160px,
+      40px 40px,
+      40px 40px,
+      100% 100%;
+    background-position:
+      0 0,
+      50px 60px,
+      100px 20px,
+      30px 80px,
+      200px 40px,
+      120px 150px,
+      180px 10px,
+      250px 120px,
+      0 0,
+      0 0,
+      0 0;
+    position: relative;
+    color: #e5e7eb;
+    animation: twinkle 8s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.95; }
+  }
+
+  /* Retro scanline effect */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.05) 0px,
+      rgba(0, 0, 0, 0.05) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    animation: scanline 8s linear infinite;
+  }
+
+  @keyframes scanline {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(10px); }
+  }
+
+  /* Retro pixel mountains/dungeon silhouette at bottom */
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background:
+      /* Mountain/castle silhouettes */
+      linear-gradient(135deg, transparent 48%, rgba(63, 52, 84, 0.4) 48%, rgba(63, 52, 84, 0.4) 52%, transparent 52%),
+      linear-gradient(225deg, transparent 48%, rgba(63, 52, 84, 0.4) 48%, rgba(63, 52, 84, 0.4) 52%, transparent 52%),
+      linear-gradient(135deg, transparent 45%, rgba(42, 33, 57, 0.6) 45%, rgba(42, 33, 57, 0.6) 55%, transparent 55%),
+      linear-gradient(225deg, transparent 45%, rgba(42, 33, 57, 0.6) 45%, rgba(42, 33, 57, 0.6) 55%, transparent 55%),
+      /* Purple glow */
+      radial-gradient(ellipse at 30% 100%, rgba(138, 92, 246, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 100%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+      /* Base gradient */
+      linear-gradient(to top, rgba(42, 33, 57, 0.3) 0%, transparent 100%);
+    background-size:
+      100px 100px,
+      100px 100px,
+      150px 150px,
+      150px 150px,
+      400px 200px,
+      400px 200px,
+      100% 100%;
+    background-position:
+      0 bottom,
+      100px bottom,
+      200px bottom,
+      300px bottom,
+      0 bottom,
+      0 bottom,
+      0 bottom;
+    background-repeat: repeat-x, repeat-x, repeat-x, repeat-x, no-repeat, no-repeat, no-repeat;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+
+  .glass-strong {
+    @apply bg-white/95 backdrop-blur-xl text-gray-800;
+  }
+
+  .task-card {
+    @apply bg-white rounded-lg shadow-md hover:shadow-xl transition-all;
+  }
+
+  .habitica-pattern {
+    position: relative;
+  }
+
+  .habitica-pattern::before {
+    content: '⭐';
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.3;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Hide Next.js dev tools indicator */
+  #__next-build-watcher,
+  .__next-build-watcher,
+  [data-nextjs-devtools],
+  button[aria-label*="Next"],
+  button[aria-label*="Dev Tools"],
+  button:has(> svg[viewBox="0 0 180 180"]),
+  button[style*="position: fixed"][style*="bottom"],
+  button[style*="z-index: 2147483647"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
